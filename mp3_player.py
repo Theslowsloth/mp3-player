@@ -3,16 +3,20 @@ import pygame
 import time
 from pathlib import Path
 
+#makes folder where playlists can go
 folder_maker = Path("C:\\Users\\Public\\Documents\\mp3_songs").mkdir(exist_ok=True)
 
 # folder path
 folder_path = Path("C:\\Users\\Public\\Documents\\mp3_songs")
-print("all music playlists you want to listen too should be put into the documents folder path is C:\\Users\\Public\\Documents")
+print("all music playlists you want to listen too should be put into the documents folder path is C:\\Users\\Public\\Documents\\mp3_songs")
+
 # list only directories
 subfolders = [f.name for f in folder_path.iterdir() if f.is_dir()]
 
+# shows what playlists you have
 print("playlists", subfolders)
 
+# asks what playlist you want to play
 folderinput = input("what playlist:")
 
 # mp3 folder
@@ -22,7 +26,7 @@ folder_files_path = ("C:\\Users\\Public\\Documents\\mp3_songs" + "\\" + folderin
 pygame.mixer.init()
 pygame.init()
 
-# Get mp3 files
+# get files from playlist
 mp3_files = [f for f in os.listdir(folder_files_path) if f.endswith(".mp3")]
 
 # Play files
@@ -37,7 +41,7 @@ for file in mp3_files:
     print("Controls: 'p' = Pause | 's' = Unpause | 'e' = Skip")
 
     while True:
-        # This waits for you to type and hit Enter
+        # waits for commands
         choice = input("Enter command: ").lower()
 
         if choice == 'p':
